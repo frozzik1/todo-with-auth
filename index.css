@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    background-color: #FAD961;
+    background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+}
+
+header {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    margin: 20px 0 0 0;
+
+}
+
+a.btn_reg:active,
+a.btn_reg:hover,
+a.btn_reg {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    margin: 5px;
+}
+
+.login-box {
+    /* width: 100%; */
+    height: auto;
+    padding: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.form_inp {
+    width: 350px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.47);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.9px);
+    -webkit-backdrop-filter: blur(10.9px);
+    display: flex;
+    transition: all .25s ease;
+    margin: 5px;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    margin: 5px 0;
+}
+
+.form_inp::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+.form_inp:hover {
+    transform: translateY(-2px);
+}
+
+.form_inp:focus {
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 350px;
+    height: 50px;
+    background: rgba(106, 255, 77, 0.47);
+    backdrop-filter: blur(10.9px);
+    -webkit-backdrop-filter: blur(10.9px);
+    margin: 15px 5px 5px 5px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all .2s ease-in-out;
+    border: none;
+    font-size: 22px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.error {
+    color: rgb(255, 0, 0);
+    font-size: 14px;
+    font-weight: 600;
+}

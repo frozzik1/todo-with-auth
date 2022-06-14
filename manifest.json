@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "ToDo list",
+    "version": "0.0.1",
+    "description": "To do list - один із важливих інструментів планування часу. Це список завдань, виконання яких можна контролювати парою кліків. В основному використовується, щоб не забувати різні відносини, які потрібно зробити.",
+    "author": "Vasilets Danylo",
+    "action": {
+        "default_title": "ToDo list",
+        "default_icon": "icons/icon.png",
+        "default_popup": "index.html"
+    },
+
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jquery.min.js",
+                "/app/app.js",
+                "/registration/login.js",
+                "index.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs"
+    ]
+}
