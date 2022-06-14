@@ -17,7 +17,7 @@ const db = firebase.firestore();
 // auth check
 auth.onAuthStateChanged(user => {
     if (user) {
-        location = "/app/app.html";
+        location = "app.html";
     }
 })
 
@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', e => {
     const loginEmail = loginForm['login-email'].value;
     const loginPassword = loginForm['login-password'].value;
     auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
-        location = "/app/app.html";
+        location = "app.html";
     }).catch(err => {
         const loginError = document.getElementById("loginError");
         loginError.innerText = err.message;
