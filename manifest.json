@@ -7,7 +7,7 @@
     "action": {
         "default_title": "ToDo list",
         "default_icon": "icon.png",
-        "default_popup": "/login/index.html"
+        "default_popup": "index.html"
     },
 
     "content_scripts": [
@@ -16,10 +16,10 @@
                 "<all_urls>"
             ],
             "js": [
-                "jquery.min.js",
-                "/app/app.js",
-                "/register/login.js",
-                "login/index.js"
+
+                "app.js",
+                "login.js",
+                "index.js"
             ]
         }
     ],
