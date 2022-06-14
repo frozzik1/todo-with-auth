@@ -89,7 +89,7 @@ auth.onAuthStateChanged(user => {
         console.log('user is signed');
     }
     else {
-        location = "index.html";
+        location = "/index.html";
     }
 })
 

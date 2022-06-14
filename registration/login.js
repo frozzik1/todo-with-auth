@@ -27,7 +27,7 @@ signupForm.addEventListener('submit', e => {
             Name: name,
             Email: email
         }).then(() => {
-            location = "index.html";
+            location = "/index.html";
         }).catch(err => {
             const signupError = document.getElementById('signupError');
             signupError.innerText = err.message;
