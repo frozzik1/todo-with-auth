@@ -14,41 +14,86 @@ const auth = firebase.auth();
 const fs = firebase.firestore();
 const db = firebase.database();
 
-const todoContainer = document.getElementById('todo-container');
 
 // getting todos
-function renderData(individualDoc) {
-    // parent div
-    let parentDiv = document.createElement("div");
-    parentDiv.className = "container todo-box";
-    parentDiv.setAttribute('data-id', individualDoc.id);
+const todoContainer = document.getElementById('todo-container');
+function renderData(todos) {
+    console.log(todos)
+    todoContainer.innerHTML=null
+    todos.forEach(todo => {
+        let parentDiv = document.createElement("div");
+        parentDiv.className = "container todo-box";
+        parentDiv.setAttribute('data-id', todo.id);
 
-    // todo div
-    let todoDiv = document.createElement("div");
-    todoDiv.textContent = individualDoc.data().todos;
+        // todo div
+        let todoDiv = document.createElement("div");
+        todoDiv.textContent = todo.todos;
 
-    // delete button 
-    let trash = document.createElement("button");
-    let i = document.createElement("i");
-    i.className = "fas fa-trash";
+        // delete button 
+        let trash = document.createElement("button");
+        let i = document.createElement("i");
+        i.className = "fas fa-trash";
+        // check button 
+        let check = document.createElement("button");
+        check.className = "checkBtn";
+        let iCheck = document.createElement("i");
+        iCheck.className = "fa-solid fa-check";
 
-    // appending elements
-    trash.appendChild(i);
-    parentDiv.appendChild(todoDiv);
-    parentDiv.appendChild(trash);
-    todoContainer.appendChild(parentDiv);
-
-    // trash clicking event
-    trash.addEventListener('click', e => {
-        let id = e.target.parentElement.parentElement.getAttribute('data-id');
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                fs.collection(user.uid).doc(id).delete();
-            }
+        if (todo.status == "completed") {
+            todoDiv.classList.add("checked");
+        }
+        // appending elements
+        parentDiv.appendChild(check);
+        check.appendChild(iCheck);
+        trash.appendChild(i);
+        parentDiv.appendChild(todoDiv);
+        parentDiv.appendChild(trash);
+        todoContainer.appendChild(parentDiv);
+        
+        // trash clicking event
+        trash.addEventListener('click', e => {
+            let id = e.target.parentElement.parentElement.getAttribute('data-id');
+            auth.onAuthStateChanged( user => {
+                if (user) {
+                      fs.collection(user.uid).doc(id).delete();
+                }
+            })
         })
+        check.addEventListener("click", function () {
+            markCompleted(todo.id);
+        });
     })
 }
 
+
+function markCompleted(id) {
+    auth.onAuthStateChanged(user=>{
+        // console.log(user.uid)
+        let item = fs.collection(user.uid).doc(id);
+        item.get().then(function (doc) {
+            if (doc.exists) {
+                if (doc.data().status == "active") {
+                    // todoDiv.classList.add("checked");
+                    item.update({
+                        status: "completed",
+                    })
+                    // .then(()=>{
+                    //     document.location.reload();
+                    // })
+                }
+                else if (doc.data().status == "completed") {
+                    item.update({
+                        status: "active",
+                    })
+                    // .then(()=>{
+                    //     document.location.reload();
+                    // })
+                }
+                
+            }
+        });
+    })
+}
 // getting username
 auth.onAuthStateChanged(user => {
     const username = document.getElementById('username');
@@ -59,19 +104,22 @@ auth.onAuthStateChanged(user => {
     }
 })
 
+function getRandomInt() {
+    return Math.floor(Math.random() * 5000000);
+}
 // adding todos to database
 const form = document.getElementById('form');
-let counter = 0;
 form.addEventListener('submit', e => {
     e.preventDefault();
     const todos = form['todos'].value;
-    let id = counter += 1;
+    let id = getRandomInt();
     form.reset();
     auth.onAuthStateChanged(user => {
         if (user) {
-            fs.collection(user.uid).doc('_' + id).set({
-                id: '_' + id,
-                todos
+            fs.collection(user.uid).doc("_" + id).set({
+                id:"_"+ id,
+                status: "active",
+                todos:todos
             })
         }
     })
@@ -94,19 +142,17 @@ auth.onAuthStateChanged(user => {
 })
 
 // realtime listners
+
 auth.onAuthStateChanged(user => {
-    if (user) {
-        fs.collection(user.uid).onSnapshot((snapshot) => {
-            let changes = snapshot.docChanges();
-            changes.forEach(change => {
-                if (change.type == "added") {
-                    renderData(change.doc);
-                }
-                else if (change.type == 'removed') {
-                    let li = todoContainer.querySelector('[data-id=' + change.doc.id + ']');
-                    todoContainer.removeChild(li);
-                }
-            })
-        })
-    }
+    fs.collection(user.uid).onSnapshot((querySnapshot) => {
+        let todos = [];
+
+        querySnapshot.forEach((doc) => {
+            todos.push({
+                id: doc.id,
+                ...doc.data(),
+            });
+        });
+        renderData(todos)
+    });
 })

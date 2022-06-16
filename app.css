@@ -46,6 +46,7 @@ h3 {
 
 .button {
     color: white;
+
     font-size: 25px;
     margin: 5px 5px 5px 15px;
     cursor: pointer;
@@ -63,7 +64,7 @@ h3 {
     width: 100%;
 }
 
-.todo-box button {
+.fa-trash {
     color: red;
     border: hidden;
     outline: none;
@@ -73,13 +74,43 @@ h3 {
     transition: all .25s ease;
     font-size: 20px;
     margin-left: 5px;
+    /* display: flex; */
 }
+.trashBtn{
+    justify-self:end;
 
-.todo-box button:hover {
+}
+.checked{
+    text-decoration: line-through;
+    color: grey;
+}
+/* .unchecked{
+    text-decoration: none;
+} */
+
+.fa-trash:hover {
     transform: translateY(-2px);
     text-shadow: 0 0 9px rgb(255, 255, 255);
 }
+.fa-check {
+    color: green;
+    border: hidden;
+    outline: none;
+    cursor: pointer;
+    /* padding: 0 0 0 7px; */
+    background-color: transparent;
+    transition: all .25s ease;
+    font-size: 20px;
+    margin-right: 10px;
+}
 
+.fa-check:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 0 9px rgb(255, 255, 255);
+}
+button{
+    background-color: transparent;
+}
 .todo-container {
     display: flex;
     flex-direction: column;
@@ -112,10 +143,11 @@ h3 {
 }
 
 .todo-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    /* flex-direction: row; */
+    /* justify-content: space-between;
+    justify-content: start; */
+    /* align-items: center; */
     background-color: #ffffff;
     margin: 3px;
     font-size: 15px;
@@ -128,7 +160,9 @@ h3 {
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
     height: auto;
-    text-align: justify;
+    /* text-align: justify; */
+    grid-template-columns: 1fr 10fr 1fr;
+    justify-items: start;
 }
 
 .form-control {
