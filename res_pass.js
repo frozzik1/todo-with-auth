@@ -16,9 +16,7 @@ const resForm = document.getElementById("res-form");
 var resPass = document.getElementById("res_btn");
 resPass.onclick = function() {
 const email = resForm['res_email'].value;
-firebase.auth().sendPasswordResetEmail(email)
-  .then(() => {
+firebase.auth().sendPasswordResetEmail(email).then(() => {
     location = "index.html";
   })
-  .catch(()=>{})
 }
