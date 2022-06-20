@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: auto;
+    height: auto;
+    font-family: 'Comfortaa', cursive;
+    background-color: #FAD961;
+    background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    margin: 20px 0 0 0;
+
+}
+
+a.btn:active,
+a.btn:hover,
+a.btn {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    margin: 5px;
+}
+
+.my-container {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e4e4e4;
+    margin: 3px;
+    padding: 3px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.todo-box button {
+    color: red;
+    border: hidden;
+    outline: none !important;
+    cursor: pointer;
+}
+
+.form_wrapper {
+    height: auto;
+    font-family: 'Comfortaa', cursive;
+    width: 400px;
+}
+
+.reg_lab {
+    margin: 5px 0;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_inp {
+    width: 350px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.47);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.9px);
+    -webkit-backdrop-filter: blur(10.9px);
+    display: flex;
+    transition: all .25s ease;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.form_inp::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.form_inp:hover {
+    transform: translateY(-2px);
+}
+
+.form_inp:focus {
+    border: none;
+    outline: none;
+}
+
+.btn_res {
+    width: 350px;
+    height: 50px;
+    background: rgba(211, 255, 197, 0.4);
+    background: rgba(106, 255, 77, 0.47);
+    backdrop-filter: blur(10.9px);
+    -webkit-backdrop-filter: blur(10.9px);
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    border: none;
+    font-size: 22px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.btn_res:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+
+}
+
+header {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    margin: 20px 0 0 0;
+
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    margin: 5px 0;
+}
